@@ -1,0 +1,21 @@
+{
+  "name": "flyontime",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"tsc -w\" \"nodemon ts-built/server.js\""
+  },
+  "author": "Team FlyOnTime",
+  "private": true,
+  "devDependencies": {
+    "@types/node": "^7.0.31",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "concurrently": "^3.4.0",
+    "express": "^4.15.3",
+    "htmlparser2": "^3.9.2",
+    "jsonld": "^0.4.12"
+  }
+}
