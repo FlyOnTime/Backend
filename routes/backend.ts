@@ -53,8 +53,8 @@ router.post("/travelInfo", function(req, res){
             prefixICAO: amsData.prefixICAO,
             flightNumber: amsData.flightNumber,
             scheduleDate: amsData.scheduleDate,
-            scheduleTime: amsData.scheduleTime,
-            destination: amsData.
+            scheduleTime: amsData.scheduleTime
+            // destination: amsData.
         };
         res.send(
         {
