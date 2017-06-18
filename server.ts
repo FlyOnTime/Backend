@@ -57,6 +57,6 @@ app.get('/', function (req, res) {
     res.send('Hello World!')
 });
 
-app.listen(3000 || process.env.PORT, "0.0.0.0", function () {
+app.listen(3000 || process.env.PORT, function () {
     console.log('Example app listening on port 3000!')
 });
