@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var client = new (require('node-rest-client').Client);
+var papaparse = require('papaparse');
 
 // 
 
@@ -39,12 +40,15 @@ router.get("/travelInfo", function(req, res){
 });
 
 router.post("/travelInfo", function(req, res){
+    
     var airlineCode = req.body.airlineCode;
     var flightNumber = req.body.flightNumber;
     var originFlightDate = req.body.originFlightDate;
-
+    
     getAMSFlightData(airlineCode, flightNumber, originFlightDate, function(amsData){
         // Build response object
+        console.log(amsData);
+        
         var resultObject = 
         {
             id: amsData.id,
@@ -53,21 +57,10 @@ router.post("/travelInfo", function(req, res){
             prefixICAO: amsData.prefixICAO,
             flightNumber: amsData.flightNumber,
             scheduleDate: amsData.scheduleDate,
-            scheduleTime: amsData.scheduleTime
-            // destination: amsData.
-        };
-        res.send(
-        {
-            id: "122016526840710660",
-            flightName: "CAI8002",
-            prefixIATA: "XC",
-            prefixICAO: "CAI",
-            flightNumber: "8002",
-            scheduleDate: "2017-06-17",
-            scheduleTime: "03:45:00",
-            destination: "AYT",
-            terminal: "3",
-            gate: "G05",
+            scheduleTime: amsData.scheduleTime,
+            destination: "KBP",
+            terminal: amsData.terminal,
+            gate: amsData.gate,
             checkinStartTime: "2017-06-17T00:45:00.000+02:00",
             checkinEndTime: "2017-06-17T03:00:00.000+02:00",
             checkInPosition: ["30", "31"],
@@ -86,7 +79,40 @@ router.post("/travelInfo", function(req, res){
             estimatedCheckInWaitingTimeSeconds: "720",
             estimatedSecurityCheckWaitingTimeSeconds: "1140",
             estimatedSecurityCheckWaitingTimeAccuracy: 94    
-        });
+        };
+
+        res.send(resultObject);
+
+        // {
+        //     id: "122016526840710660",
+        //     flightName: "CAI8002",
+        //     prefixIATA: "XC",
+        //     prefixICAO: "CAI",
+        //     flightNumber: "8002",
+        //     scheduleDate: "2017-06-17",
+        //     scheduleTime: "03:45:00",
+        //     destination: "AYT",
+        //     terminal: "3",
+        //     gate: "G05",
+        //     checkinStartTime: "2017-06-17T00:45:00.000+02:00",
+        //     checkinEndTime: "2017-06-17T03:00:00.000+02:00",
+        //     checkInPosition: ["30", "31"],
+        //     expectedTimeBoarding: "2017-06-17T03:15:00.000+02:00",
+        //     expectedTimeGateOpen: "2017-06-17T01:00:00.000+02:00",
+        //     expectedTimeGateClosing: "2017-06-17T03:35:00.000+02:00",
+        //     luggageInformation: {
+        //         itemNumber: 2,
+        //         itemAllowance: "max. 23 kg, 1 bag",
+        //         specialLuggageNumber: 1,
+        //         specialLuggageType: "bicycle",
+        //         specialLuggageAllowance: "max. 25 kg, 1 bag"
+        //     },
+        //     estimatedWaitingTimeTotalSeconds: "1200",
+        //     estimatedIndoorWalkingDurationSeconds: "900",
+        //     estimatedCheckInWaitingTimeSeconds: "720",
+        //     estimatedSecurityCheckWaitingTimeSeconds: "1140",
+        //     estimatedSecurityCheckWaitingTimeAccuracy: 94    
+        // });
     });
 });
 
