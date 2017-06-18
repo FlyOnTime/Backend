@@ -31,7 +31,7 @@ router.get("/travelInfo", function (req, res) {
         estimatedIndoorWalkingDurationSeconds: "900",
         estimatedCheckInWaitingTimeSeconds: "720",
         estimatedSecurityCheckWaitingTimeSeconds: "1140",
-        estimatedSecurityCheckWaitingTimeAccuracy: "94%"
+        estimatedSecurityCheckWaitingTimeAccuracy: "94"
     };
     res.send(resultSchema);
 });
@@ -41,6 +41,16 @@ router.post("/travelInfo", function (req, res) {
     var originFlightDate = req.body.originFlightDate;
     getAMSFlightData(airlineCode, flightNumber, originFlightDate, function (amsData) {
         // Build response object
+        var resultObject = {
+            id: amsData.id,
+            flightName: amsData.flightName,
+            prefixIATA: amsData.prefixIATA,
+            prefixICAO: amsData.prefixICAO,
+            flightNumber: amsData.flightNumber,
+            scheduleDate: amsData.scheduleDate,
+            scheduleTime: amsData.scheduleTime,
+            destination: amsData.
+        };
         res.send({
             id: "122016526840710660",
             flightName: "CAI8002",
