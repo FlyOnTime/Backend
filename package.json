@@ -4,17 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "node ts/server.js",
     "live-dev": "concurrently \"tsc -w\" \"nodemon dist/server.js\""
   },
   "author": "Team FlyOnTime",
   "private": true,
   "devDependencies": {
     "@types/node": "^7.0.31",
-    "nodemon": "^1.11.0",
-    "typescript": "^2.3.4"
+    "nodemon": "^1.11.0"
   },
   "dependencies": {
+    "typescript": "^2.3.4",
     "@google/maps": "^0.4.1",
     "babyparse": "^0.4.6",
     "body-parser": "^1.17.2",
