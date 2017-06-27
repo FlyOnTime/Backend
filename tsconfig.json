@@ -2,7 +2,9 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "ES5",
-    "outDir": "dist",
-    "rootDir": ""
+    "outDir": "ts",
+    "rootDir": "src",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
   }
 }
