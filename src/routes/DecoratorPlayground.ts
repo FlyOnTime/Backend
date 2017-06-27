@@ -27,7 +27,7 @@ export class DecoratorPlayground {
 }
 
 export interface DecoratorPlaygroundInterface {
-    @GET(false)
+    //@GET(false)
     doStuffInterface();
 }
 
