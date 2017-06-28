@@ -1,10 +1,10 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", {value: true});
+Object.defineProperty(exports, "__esModule", { value: true });
 var express = require('express');
 var router = express.Router();
 var client = new (require('node-rest-client').Client);
 var papaparse = require('papaparse');
-// 
+//TODO: Migrate routes to @link{FeedController.ts}
 router.get("/travelInfo", function (req, res) {
     var resultSchema = {
         id: "122016526840710660",
@@ -142,13 +142,8 @@ router.get("/flightInfo/:airlineCode/:flightNumber/:originFlightDate", function 
 function getAMSFlightData(airlineCode, flightNumber, originFlightDate, callback) {
     // https://api-acc.schiphol.nl/public-flights/flights?app_id=a5ce65e3&app_key=34e2fc05aed1f047beeedb6c629972c1&airline=LH
     var args = {
-        headers: {ResourceVersion: "v3"},
-        parameters: {
-            app_id: "a5ce65e3",
-            app_key: "34e2fc05aed1f047beeedb6c629972c1",
-            flightname: airlineCode + flightNumber,
-            scheduleDate: originFlightDate
-        }
+        headers: { ResourceVersion: "v3" },
+        parameters: { app_id: "a5ce65e3", app_key: "34e2fc05aed1f047beeedb6c629972c1", flightname: airlineCode + flightNumber, scheduleDate: originFlightDate }
     };
     console.log(args);
     // args["headers"]["ResourceVersion: v3"] = "d017a45398ba4a8e14b7fe534fb9b54a";

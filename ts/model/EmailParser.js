@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", {value: true});
+Object.defineProperty(exports, "__esModule", { value: true });
 var fs = require("fs");
 var colors = require('colors/safe');
 require('colors').enabled = true;
@@ -9,7 +9,6 @@ var EmailParser = (function () {
         // Strategy used to parse the data
         this.strategy = new JSONLDMarkupParsingStrategy_1.JSONLDMarkupParsingStrategy();
     }
-
     EmailParser.prototype.main = function () {
         var _this = this;
         fs.readFile("ExampleInput.html", "utf8", function (err, fileContents) {

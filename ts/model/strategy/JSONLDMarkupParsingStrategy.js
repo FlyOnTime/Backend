@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", {value: true});
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Created by jossi on 24.06.2017.
  */
@@ -10,7 +10,6 @@ var JSONLDMarkupParsingStrategy = (function () {
     function JSONLDMarkupParsingStrategy() {
         this.SEARCH_ATTRIBUTES = new NodeModel_1.NodeModel("script", [new AttributeModel_1.AttributeModel("type", "application/ld+json")]);
     }
-
     JSONLDMarkupParsingStrategy.prototype.getData = function (fileContents) {
         var nodes = romagny13_html_parser_1.parse(fileContents);
         var indexOfStuff = this.recursiveIterate(nodes, this.SEARCH_ATTRIBUTES);
