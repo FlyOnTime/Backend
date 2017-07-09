@@ -1,4 +1,3 @@
-
 import {createExpressServer} from "routing-controllers";
 import * as bodyParser from "body-parser";
 import {Express} from "express";

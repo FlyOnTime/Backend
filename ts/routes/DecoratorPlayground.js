@@ -11,11 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var rxjs_1 = require("@reactivex/rxjs");
 var DecoratorPlayground = (function () {
-    function DecoratorPlayground(stuff) {
-        this.stuff = stuff;
+    function DecoratorPlayground() {
     }
     DecoratorPlayground.prototype.getSchipholFlightDataRx = function (airlineCode, flightNumber, originFlightDate) {
-        this.stuff;
         var URL = "https://api-acc.schiphol.nl/public-flights/flights";
         return rxjs_1.Observable.fromEvent(client.get(URL, {
             headers: { ResourceVersion: "v3" },
@@ -23,26 +21,28 @@ var DecoratorPlayground = (function () {
         }), "receiveData");
     };
     DecoratorPlayground.prototype.doStuff = function () {
+        return this.dummyObservable();
+    };
+    DecoratorPlayground.prototype.dummyObservable = function () {
+        return rxjs_1.Observable.empty();
     };
     return DecoratorPlayground;
 }());
 __decorate([
-    GET(false),
+    GET(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object, Object]),
     __metadata("design:returntype", rxjs_1.Observable)
 ], DecoratorPlayground.prototype, "getSchipholFlightDataRx", null);
 __decorate([
-    GET(false),
+    GET(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", rxjs_1.Observable)
 ], DecoratorPlayground.prototype, "doStuff", null);
 exports.DecoratorPlayground = DecoratorPlayground;
 // @GET Decorator to annotate (interface) methods to indicate the endpoint should be requested with GET
-function GET(value) {
+function GET() {
     return function (target, propertyKey, descriptor) {
-        console.log(descriptor);
-        descriptor.configurable = value;
     };
 }

@@ -1,5 +1,7 @@
 ### FlyOnTime-Backend
 
+This is the backend for project FlyOnTime from RecodingAviation.
+
 ###### Instructions to run
 
 ```

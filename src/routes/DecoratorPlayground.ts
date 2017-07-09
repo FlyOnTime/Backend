@@ -2,16 +2,9 @@ import {Observable} from "@reactivex/rxjs";
 
 export class DecoratorPlayground {
 
-    stuff;
-
-    constructor(stuff) {
-        this.stuff = stuff;
-    }
-
-    @GET(false)
+    @GET()
     getSchipholFlightDataRx(airlineCode, flightNumber, originFlightDate): Observable<any> {
 
-        this.stuff;
         const URL: string = "https://api-acc.schiphol.nl/public-flights/flights";
 
         return Observable.fromEvent(
@@ -26,9 +19,13 @@ export class DecoratorPlayground {
         );
     }
 
-    @GET(false)
-    doStuff(): void {
+    @GET()
+    doStuff(): Observable<any> {
+        return this.dummyObservable();
+    }
 
+    dummyObservable(): Observable<any> {
+        return Observable.empty();
     }
 
 }
@@ -39,9 +36,8 @@ export interface DecoratorPlaygroundInterface {
 }
 
 // @GET Decorator to annotate (interface) methods to indicate the endpoint should be requested with GET
-function GET(value: boolean) {
+function GET(): Function {
     return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-        console.log(descriptor);
-        descriptor.configurable = value;
+
     }
 }

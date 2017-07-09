@@ -6,14 +6,9 @@ import "reflect-metadata";
 @JsonController()
 export class FeedController {
 
-    @Get("/users")
+    @Get("/")
     getAll() {
-        return "This action returns all users";
-    }
-
-    @Post("/users")
-    post(@Body() user: any) {
-        return "Saving user...";
+        return "Basic route is here";
     }
 
 }
