@@ -3,6 +3,7 @@ import * as bodyParser from "body-parser";
 import {Express} from "express";
 import {EmailParser} from "./model/EmailParser";
 import {DecoratorPlayground} from "./routes/DecoratorPlayground";
+import "reflect-metadata";
 
 /*var apitest = require("./routes/apitest");
 var backend = require("./routes/backend");
@@ -20,8 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 let parser = new EmailParser();
 parser.main();
 
-let desc: DecoratorPlayground = new DecoratorPlayground;
-desc.doStuff();
+let desc: DecoratorPlayground = new DecoratorPlayground("test");
 
 const port: number = process.env.PORT || 3000;
 

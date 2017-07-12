@@ -1,8 +1,23 @@
 import {Observable} from "@reactivex/rxjs";
+import "reflect-metadata";
+import {Retrofit} from "../retrofit/Retrofit";
+import {TestRequestModel} from "../model/data/TestRequestModel";
+import {TypedJSON} from "typedjson-npm";
+//import {RetrofitDecorators} from "./RetrofitDecorators";
+//import {GET} from "./RetrofitDecorators";
+
 
 export class DecoratorPlayground {
 
-    @GET()
+
+
+    constructor(m: string) {
+        this.exampleRoute()
+            //.map(data => TypedJSON.parse(data.toString(), TestRequestModel))
+            .subscribe(data => console.log(JSON.stringify(data)), error => console.log(error));
+    }
+
+    //@GET("")
     getSchipholFlightDataRx(airlineCode, flightNumber, originFlightDate): Observable<any> {
 
         const URL: string = "https://api-acc.schiphol.nl/public-flights/flights";
@@ -19,25 +34,13 @@ export class DecoratorPlayground {
         );
     }
 
-    @GET()
-    doStuff(): Observable<any> {
-        return this.dummyObservable();
+    @(new Retrofit("https://jsonplaceholder.typicode.com")).GET("posts", TestRequestModel)
+    exampleRoute(): Observable<Array<TestRequestModel>> {
+
     }
 
     dummyObservable(): Observable<any> {
         return Observable.empty();
     }
 
-}
-
-export interface DecoratorPlaygroundInterface {
-    //@GET(false)
-    doStuffInterface();
-}
-
-// @GET Decorator to annotate (interface) methods to indicate the endpoint should be requested with GET
-function GET(): Function {
-    return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-
-    }
 }

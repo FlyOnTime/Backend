@@ -8,37 +8,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var routing_controllers_1 = require("routing-controllers");
-require("reflect-metadata");
 //TODO: Migrate routes from @link{backend.ts} here
 var FeedController = (function () {
     function FeedController() {
     }
     FeedController.prototype.getAll = function () {
-        return "This action returns all users";
-    };
-    FeedController.prototype.post = function (user) {
-        return "Saving user...";
+        return "Basic route is here";
     };
     return FeedController;
 }());
 __decorate([
-    routing_controllers_1.Get("/users"),
+    routing_controllers_1.Get("/"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], FeedController.prototype, "getAll", null);
-__decorate([
-    routing_controllers_1.Post("/users"),
-    __param(0, routing_controllers_1.Body()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
-], FeedController.prototype, "post", null);
 FeedController = __decorate([
     routing_controllers_1.JsonController()
 ], FeedController);
