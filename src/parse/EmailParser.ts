@@ -3,8 +3,8 @@ import {Observable} from "@reactivex/rxjs";
 import { parse } from "romagny13-html-parser";
 let colors = require('colors/safe');
 require('colors').enabled = true;
-import {ParsingStrategy} from "./strategy/ParsingStrategy";
-import {JSONLDMarkupParsingStrategy} from "./strategy/JSONLDMarkupParsingStrategy";
+import {ParsingStrategy} from "../model/strategy/ParsingStrategy";
+import {JSONLDMarkupParsingStrategy} from "../model/strategy/JSONLDMarkupParsingStrategy";
 
 export class EmailParser {
 

@@ -4,7 +4,7 @@ var express = require('express');
 var router = express.Router();
 var client = new (require('node-rest-client').Client);
 var papaparse = require('papaparse');
-//TODO: Migrate routes to @link{FeedController.ts}
+//TODO: Migrate routes to @link{RegistrationController.ts}
 router.get("/travelInfo", function (req, res) {
     var resultSchema = {
         id: "122016526840710660",

@@ -1,15 +1,18 @@
-import {createExpressServer} from "routing-controllers";
+import {createExpressServer, useContainer} from "routing-controllers";
 import * as bodyParser from "body-parser";
 import {Express} from "express";
-import {EmailParser} from "./model/EmailParser";
+import {EmailParser} from "./parse/EmailParser";
 import {DecoratorPlayground} from "./routes/DecoratorPlayground";
 import "reflect-metadata";
+import {Container} from "typedi";
 
 /*var apitest = require("./routes/apitest");
 var backend = require("./routes/backend");
 
 app.use("/apitest", apitest);
 app.use("/backend", backend);*/
+
+useContainer(Container);
 
 const app: Express = createExpressServer({
     controllers: [__dirname + "/controllers/*.js"] // we specify controllers we want to use

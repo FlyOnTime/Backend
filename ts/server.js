@@ -2,14 +2,16 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var routing_controllers_1 = require("routing-controllers");
 var bodyParser = require("body-parser");
-var EmailParser_1 = require("./model/EmailParser");
+var EmailParser_1 = require("./parse/EmailParser");
 var DecoratorPlayground_1 = require("./routes/DecoratorPlayground");
 require("reflect-metadata");
+var typedi_1 = require("typedi");
 /*var apitest = require("./routes/apitest");
 var backend = require("./routes/backend");
 
 app.use("/apitest", apitest);
 app.use("/backend", backend);*/
+routing_controllers_1.useContainer(typedi_1.Container);
 var app = routing_controllers_1.createExpressServer({
     controllers: [__dirname + "/controllers/*.js"] // we specify controllers we want to use
 });
