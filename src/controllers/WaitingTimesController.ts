@@ -1,4 +1,4 @@
-import { Body, Get, JsonController, Post, Param } from "routing-controllers";
+import {Get, JsonController, Param, Post} from "routing-controllers";
 
 //TODO: Migrate routes from @link{backend.ts} here
 
@@ -8,14 +8,14 @@ export class WaitingTimesController {
     @Get("/waitingTimes/:airport")
     getWaitingTimesForAirport( @Param("airport") airport: string) {
 
-        // return new WaitingTimesRequestBody();
+        // return new WaitingTimesResponseBody();
 
-        return "[ { 'point': { 'lat': 53.593361,'lng': 10.013886},'type': 'SECURITY','waitingTimeInSeconds': 400},{'point': {'lat': 53.631862,'lng': 10.005338},'type': 'CHECKIN','waitingTimeInSeconds': 700}]";
+        return "[ { 'points': { 'lat': 53.593361,'lng': 10.013886},'type': 'SECURITY','waitingTimeInSeconds': 400},{'point': {'lat': 53.631862,'lng': 10.005338},'type': 'CHECKIN','waitingTimeInSeconds': 700}]";
     }
 
     @Post("/waitingTimes/:airport")
     getWaitingTimesForUser( @Param("airport") airport: string) {
-        var response = {
+        let response = {
             "airportArrivalTime": {
                 "mins": 10,
                 "date": "2017-07-15T11:03:00+02:00"

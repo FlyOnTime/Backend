@@ -1,1 +1,6 @@
 node_modules
+/src/retrofit/Retrofit.ts
+/src/model/data/
+/src/retrofit/RetrofitDecorators.ts
+/src/routes/DecoratorPlayground.ts
+/package-lock.json
