@@ -3,7 +3,7 @@
  */
 
 export class WaitingTimesResponseBody {
-    constructor(public airportArrivalTime: AirportArrivalTime, public items: Array<PositionsListItem>) {
+    constructor(public items: Array<PositionsListItem>) {
     }
 
 }

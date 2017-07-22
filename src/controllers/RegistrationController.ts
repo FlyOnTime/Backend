@@ -2,10 +2,15 @@ import {Get, JsonController} from "routing-controllers";
 import {RegisterRequestBody} from "../model/register/RegisterResponseBody";
 //import v4 as thing from "uuid";
 import * as uuid from "uuid";
+import {UsersContainer} from "../container/UsersContainer";
+
 //TODO: Migrate routes from @link{backend.ts} here
 
 @JsonController()
 export class RegistrationController {
+
+    constructor(private userContainter: UsersContainer) {
+    }
 
     @Get("/register")
     registerUser() {
@@ -13,6 +18,8 @@ export class RegistrationController {
         let userId: number = Math.floor(Math.random() * CRITERIA.MAX_USER_ID_VALUE) + CRITERIA.MIN_USER_ID_VALUE;
         // Generate a sessionId
         let sessionId: string = uuid.v4();
+        // Set the uid and sessionId in the UserContainer to store it
+        this.userContainter.sessions.set(userId, sessionId);
         /*  Return the generated data wrapped in a RegisterRequestBody
             It will then be serialized and sent as JSON
          */
