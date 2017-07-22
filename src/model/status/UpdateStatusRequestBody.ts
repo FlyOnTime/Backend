@@ -1,5 +1,7 @@
+import {Location} from "../waitingTimes/PostWaitingTimesResponseBody";
+
 export class UpdateStatusRequestBody {
-    constructor(public userId: number, public status: Status) {
+    constructor(public userId: number, public userLocation: Location, public status: Status) {
     }
 }
 

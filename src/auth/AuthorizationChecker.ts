@@ -16,9 +16,9 @@ export class AuthorizationChecker {
 
     static currentUserChecker = async (action: Action) => {
         const token = action.request.headers["sessionid"];
-        const sessionId = Container.get(UsersContainer).sessions.get(action.request.body["userId"]);
         return new Promise(function (resolve, reject) {
-            if (!isUndefined(sessionId) && !isUndefined(token) && token == sessionId) {
+            const user = Container.get(UsersContainer).sessions.get(action.request.body["userId"]);
+            if (!isUndefined(user) && !isUndefined(user.sessionId) && !isUndefined(token) && token == user.sessionId) {
                 resolve(new UserModel(action.request.body["userId"], token));
             }
             else {

@@ -3,6 +3,7 @@ import {RegisterRequestBody} from "../model/register/RegisterResponseBody";
 //import v4 as thing from "uuid";
 import * as uuid from "uuid";
 import {UsersContainer} from "../container/UsersContainer";
+import {UserSessionModel} from "../model/UserModel";
 
 //TODO: Migrate routes from @link{backend.ts} here
 
@@ -19,7 +20,8 @@ export class RegistrationController {
         // Generate a sessionId
         let sessionId: string = uuid.v4();
         // Set the uid and sessionId in the UserContainer to store it
-        this.userContainter.sessions.set(userId, sessionId);
+        // The user location and status are unknown at this time. They will get updated later.
+        this.userContainter.sessions.set(userId, new UserSessionModel(sessionId, null, null));
         /*  Return the generated data wrapped in a RegisterRequestBody
             It will then be serialized and sent as JSON
          */
